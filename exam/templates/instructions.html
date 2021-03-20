@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<title>Exam Instructions</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+  background-image: url("{% static 'background.jpg' %}");
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+</style>
+<body>
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+  <div class="w3-display-topleft w3-padding-large w3-xlarge">
+    <a href="{% url 'main_page' %}" class='w3-hover-text-green'>PROctor</a>
+    <img src="{% static 'PROlogo.png' %}" width="50" height="50">
+  </div>
+  <div class="w3-display-middle">
+    <h1 class="w3-jumbo w3-animate-top w3-center">Exam Instructions</h1>
+    <hr class="w3-border-grey" style="margin:auto;width:40%">
+    <br>
+    <p class="w3-large  w3-animate-top w3-center">1. You are not allowed to use mobile phones during the exam.</p>
+    <p class="w3-large  w3-animate-top w3-center">2. You are not allowed to leave a workingplace during the exam.</p>
+    <p class="w3-large  w3-animate-top w3-center">3. You are not allowed to ask for help from other people.</p>
+    <p class="w3-large  w3-animate-top w3-center">4. You are not allowed to use any notes during the exam.</p>
+    <p class="w3-large  w3-animate-top w3-center">5. You should look straight on the screen during the exam.</p>
+    <form class="w3-large  w3-animate-top w3-center" method='POST'>
+      {% csrf_token %}
+      <input type="checkbox" name="agreed" required> I agree with these instructions  
+      <button type="submit" class="btn btn-success ">Start</button>
+    </form>
+
+  </div>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Take Exam</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <style>
+  body,h1 {font-family: "Raleway", sans-serif}
+  body, html {height: 100%}
+  .bgimg {
+    background-image: url("{% static 'background.jpg' %}");
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+  }
+  </style>
+  <!-- Custom styles for this template -->
+</head>
+
+<body>
+<div class="bgimg">
+  <div class="w3-display-topleft w3-padding-large w3-xlarge">
+    <a href="{% url 'main_page' %}" class='w3-hover-text-green text-white'>PROctor</a>
+    <img src="{% static 'PROlogo.png' %}" width="50" height="50">
+  </div>
+
+  <br>
+  <br>
+  <h2 class='text-center text-white'>Exam</h2>
+
+  <!-- Page Content -->
+  <div class= "container">
+      <br>
+    {% for question in questions %}
+    <div class="row">
+      <div class="col">
+        <div class="card h-80">
+
+          <div class="card-body">
+            <h4 class="card-title">Question {{question}}</h4>
+          </div>
+
+          <div class="card-footer text-right">
+            <div class="row">
+              <form>
+                {% csrf_token %}
+                <input type="radio" name="{{question}}" value="1">
+                <label> Option 1 </label><br>
+                <input type="radio" name="{{question}}" value="2">
+                <label> Option 2 </label><br>
+                <input type="radio" name="{{question}}" value="3">
+                <label> Option 3 </label><br>
+                <input type="radio" name="{{question}}" value="4">
+                <label> Option 4 </label><br>
+                </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <br>
+    {% endfor %}
+    <form method='POST'>
+      {% csrf_token %}
+      <button type="submit" class="btn btn-success ">Finish</button>
+    </form> 
+    <br>
+  </div>
+  <br>
+  <br>
+
+</div>  
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+
+</body>
+
+</html>
