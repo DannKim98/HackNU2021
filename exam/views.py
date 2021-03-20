@@ -78,7 +78,7 @@ def detect():
                 telegram_send.send(images=[f], messages=[str(datetime.datetime.now())[:19] + ', ' + student + ': Cheating Behavior is Detected (Student Gone)'])
             isGone = True
 
-        cv2.imshow("Output",img)
+        # cv2.imshow("Output",img)
         cv2.waitKey(1)
 
 def take_exam(request):
